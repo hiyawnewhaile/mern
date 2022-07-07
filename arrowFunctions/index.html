@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="greeting">Good afternoon</h2>
+    <input type="text" id="inputTag">
+    <button id="button">submit</button>
+    <br>
+    <button id="block">Make block</button>
+    <input type="text" id="widthheight">
+    <div id="blocks"></div>
+    <script>
+        // when the button is clicked
+        // we grab the value from the input
+        //we take that value and put it in the h2
+        document.getElementById("button").onclick = () => updateHeader();
+        const updateHeader = () => document.getElementById("greeting").innerText = "Good afternoon " + document.getElementById("inputTag").value;
+        const makeblock = () => {
+            let size = document.getElementById("widthheight").value;
+            document.getElementById("blocks").innerHTML += `<div style='background-color: red; width: ${size}px; height: ${size}px;'></div>`;
+        }
+        document.getElementById("block").onclick = () => makeblock();
+    </script>
+</body>
+</html>
