@@ -13,7 +13,9 @@ const lightMode = {
 }
 
 class First extends Component {
+    // Declare constructor to overide the default constructor to be able to set the state object
     constructor(props){
+        // gives us all the functionality of the default constructor that come with component
         super(props);
         this.state = {
             light: true
