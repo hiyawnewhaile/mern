@@ -2,11 +2,10 @@ import { useState } from "react";
 
 const Tabs = props => {
 
-    const [show, setShow] = useState("");
+    const [show, setShow] = useState(props.content);
 
     const clickHandler = () => {
-        setShow(props.content);
-        props.click(show)
+        props.click(show);
     }
 
     return(
