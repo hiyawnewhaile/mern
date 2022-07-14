@@ -1,3 +1,11 @@
+const aliveButtonStyle = {
+    backgroundColor: "lightgreen",
+}
+
+const deadButtonStyle = {
+    backgroundColor: "salmon",
+}
+
 const Results = props => {
     return(
         <div>
@@ -14,13 +22,13 @@ const Results = props => {
                     </tr>
                 </thead>
                 {
-                    props.allChars.map((character) => {
+                    props.allChars.map((character, i) => {
                         return <tr>
                             <td>{character.Name}</td>
                             <td>{character.RealName}</td>
                             <td>{character.Power}</td>
                             <td>{character.NumSideKicks}</td>
-                            <td>{character.IsAlive? "Yes" : "NO"}</td>
+                            <td style={character.IsAlive? aliveButtonStyle : deadButtonStyle} onClick={() => props.toggleLife(i)}>{character.IsAlive? "Yes" : "NO"}</td>
                             <td>{character.Universe}</td>
                         </tr>
                     })
