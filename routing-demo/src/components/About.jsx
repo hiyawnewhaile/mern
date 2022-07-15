@@ -1,9 +1,9 @@
 const About = props => {
     return(
         <div>
-            <h1>This is my About page</h1>
+            <h2>This is my About page!</h2>
         </div>
-    )
+    );
 }
 
 export default About;
