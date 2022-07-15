@@ -5,6 +5,7 @@ import People from './components/People';
 import Planets from './components/Planets';
 import Home from './components/Home';
 import Starship from './components/Starship';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (

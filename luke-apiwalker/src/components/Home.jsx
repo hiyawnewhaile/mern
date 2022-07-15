@@ -1,8 +1,6 @@
 const Home = props => {
     return(
-        <div>
-
-        </div>
+        <div></div>
     );
 }
 
