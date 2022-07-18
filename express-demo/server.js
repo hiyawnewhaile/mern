@@ -41,4 +41,4 @@ app.get("/users/:id", (req, res) => {
 
 
 // We need to start our server up
-app.listen(port, ()=> console.log(`runiing on ${port}!!`));
+app.listen(port, ()=> console.log(`running on port ${port}!!`));
