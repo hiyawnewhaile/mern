@@ -48,6 +48,4 @@ app.get("/api/company/new", (req, res) => {
     })
 })
 
-app.get("/example", )
-
 app.listen(port, ()=> console.log(`running on port ${port}`));
