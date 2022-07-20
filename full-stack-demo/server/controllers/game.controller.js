@@ -25,7 +25,7 @@ module.exports.findAllGames = (req, res) => {
 
 // UPDATE
 module.exports.updateGame = (req, res) => {
-    Game.findOneAndUpdate({_id: req.params._id}, req.body, {new: true})
+    Game.findOneAndUpdate({_id: req.params._id}, req.body, {new: true, runValidators: true})
     .then(updateGame => res.json(updateGame))
     .catch(err => res.json({message: "Something went wrong while updating one Game", error: err}))
 }

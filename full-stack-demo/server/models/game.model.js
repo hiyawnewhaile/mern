@@ -11,7 +11,7 @@ const GameShema = new mongoose.Schema({
     },
     minPlayers: {
         type: Number,
-        required: [1, "Atleast 1 person is needed tp play a game!"]
+        min: [1, "Atleast 1 person is needed to play a game!"]
     }
 }, {timestamps: true});
 

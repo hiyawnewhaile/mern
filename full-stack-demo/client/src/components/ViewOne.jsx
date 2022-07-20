@@ -9,7 +9,7 @@ const ViewOne = props => {
         axios.get("http://localhost:8000/api/games/" + _id)
         .then(res => setOneGame(res.data[0]))
         .catch(err => console.log(err))
-    }, [])
+    }, [_id])
     return(
         <div className='flex'>
             {
