@@ -16,7 +16,6 @@ function App() {
         <Route path="/update/:_id" element={<UpdateForm/>}/>
         <Route path="/game/:_id" element={<ViewOne/>}/>
       </Routes>
-
     </div>
   );
 }

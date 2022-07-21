@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const GameShema = new mongoose.Schema({
+const GameSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Title is Required!"]
@@ -13,8 +13,8 @@ const GameShema = new mongoose.Schema({
         type: Number,
         min: [1, "Atleast 1 person is needed to play a game!"]
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
-const Game = mongoose.model("Game", GameShema);
+const Game = mongoose.model("Game", GameSchema);
 
 module.exports = Game;

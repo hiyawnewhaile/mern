@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 
 const ViewOne = props => {
     const [oneGame, setOneGame] = useState(null);
-    const {_id } = useParams();
+    const { _id } = useParams();
     useEffect(() => {
         axios.get("http://localhost:8000/api/games/" + _id)
-        .then(res => setOneGame(res.data[0]))
-        .catch(err => console.log(err))
+            .then(res => setOneGame(res.data[0]))
+            .catch(err => console.log(err))
     }, [_id])
-    return(
+    return (
         <div className='flex'>
             {
                 oneGame ? <div className='card'>
