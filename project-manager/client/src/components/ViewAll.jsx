@@ -11,6 +11,12 @@ const ViewAll = props => {
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
     }, [products]);
+    const handleDelete = id => {
+        axios
+            .delete("http://localhost:8000/api/products/delete/" + id)
+            .then(() => console.log("Item deleted"))
+            .catch(err => console.log("Issue deleting", err))
+    };
     return(
         <div>
             <AddProduct/>
@@ -24,6 +30,8 @@ const ViewAll = props => {
                                     <h2><Link to={`/product/viewone/${prod._id}`}>{prod.title}</Link></h2>
                             <h4>${prod.price}</h4>
                             <h4>{prod.description}</h4>
+                            <Link to={`/product/update/${prod._id}`}><button>Edit</button></Link>
+                            <button onClick={() => handleDelete(prod._id)}>Delete</button>
                                 </li>
                             </ul>
                         </div>

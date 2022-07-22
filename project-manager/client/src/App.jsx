@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route, Link } from 'react-router-dom'
 import ViewAll from './components/ViewAll';
 import ViewOne from './components/ViewOne';
+import EditProduct from './components/EditProduct';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ViewAll/>}/>
         <Route path="/product/viewone/:_id" element={<ViewOne/>}/>
+        <Route path="/product/update/:_id" element={<EditProduct/>}/>
       </Routes>
     </div>
   );

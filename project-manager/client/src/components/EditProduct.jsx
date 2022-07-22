@@ -1,32 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useParams,useNavigate } from "react-router-dom";
 
-const AddProduct = props => {
+const EditProduct = props => {
+    const navigate = useNavigate();
+    const { _id } = useParams();
     const [errors, setErrors] = useState({});
     const [form, setForm] = useState({
         title: "",
         price: 0,
         description: ""
     });
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/api/products/" +_id)
+            .then(res => setForm(res.data[0]))
+            .catch(err => console.log(err))
+    }, [_id]);
     const onChangeHandler = e => {
         setForm({...form, [e.target.name]: e.target.value})
     };
     const formHandler = e => {
         e.preventDefault();
         axios
-            .post("http://localhost:8000/api/products/create", form)
+            .put("http://localhost:8000/api/products/update/" + _id, form)
             .then((res) => {
                 if(res.data.error){
                     console.log("Something went wrong");
                     setErrors(res.data.error.errors)
                 } else {
                     console.log("We made it!");
+                    navigate("/")
                 }
             })
             .catch((err) => console.log(err));
     };
     return(
         <div>
+            <div>
             <form onSubmit={formHandler}>
                 <div>
                     <label htmlFor="title">Title</label>
@@ -43,11 +54,12 @@ const AddProduct = props => {
                     <input type="text" name="description" value={form.description} onChange={onChangeHandler}/>
                 </div>
                 <div>
-                    <input type="submit" value="create" />
+                    <input type="submit" value="Update" />
                 </div>
             </form>
         </div>
+        </div>
     )
-};
+}
 
-export default AddProduct;
+export default EditProduct;
