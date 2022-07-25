@@ -16,23 +16,23 @@ const People = props => {
             })
             .catch(err => setError(err))
     }, [id])
-    return(
+    return (
         <div>
             {
-                    error? <div>
-                    <img src={obi}alt="obi" />
+                error ? <div>
+                    <img src={obi} alt="obi" />
                     <p>"These aren't the droids you're looking for"</p>
-                    </div>
-                :
-                person ? <div>
-                    <h1>{person.name}</h1>
-                    <h4>Height: {person.height}</h4>
-                    <h4>Mass: {person.mass}</h4>
-                    <h4>Hair Color: {person.hair_color}</h4>
-                    <h4>Skin Color: {person.skin_color}</h4>
                 </div>
                     :
-                ""
+                    person ? <div>
+                        <h1>{person.name}</h1>
+                        <h4>Height: {person.height}</h4>
+                        <h4>Mass: {person.mass}</h4>
+                        <h4>Hair Color: {person.hair_color}</h4>
+                        <h4>Skin Color: {person.skin_color}</h4>
+                    </div>
+                        :
+                        ""
             }
         </div>
     );
