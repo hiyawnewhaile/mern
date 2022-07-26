@@ -19,8 +19,7 @@ const ViewAll = props => {
     return (
         <div>
             <div>
-                <h1>Favorite authors</h1>
-                {/* <Link><h4>Add an author</h4></Link> */}
+                <Link to={'/authors/addauthor'}><h4>Add an author</h4></Link>
                 {
                     authors ? authors.map((author, i) => (
                         <div key={i}>
