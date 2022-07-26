@@ -1,13 +1,18 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import AuthorsList from '../components/AuthorsList';
 
 const ViewAll = props => {
+    const [loaded, setLoaded] = useState(false);
     const [authors, setAuthors] = useState(null);
     useEffect(() => {
         axios
             .get("http://localhost:8000/api/authors")
-            .then((res) => setAuthors(res.data))
+            .then((res) => {
+                setAuthors(res.data)
+                setLoaded(true)
+            })
             .catch((err) => console.log(err));
     }, [authors]);
     const deleteHandler = id => {
@@ -18,28 +23,9 @@ const ViewAll = props => {
     }
     return (
         <div>
-            <div>
-                <Link to={'/authors/addauthor'}><h4>Add an author</h4></Link>
-                {
-                    authors ? authors.map((author, i) => (
-                        <div key={i}>
-                            <table>
-                                <thead>
-                                    <th>Author</th>
-                                    <th>Actions available</th>
-                                </thead>
-                                <tr>
-                                    <td>{author.name}</td>
-                                    <td>
-                                        <button>Edit</button>
-                                        <button onClick={() => deleteHandler(author._id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    )) : ""
-                }
-            </div>
+            {
+                loaded && <AuthorsList authors={authors} delete={deleteHandler}/>
+            }
         </div>
     )
 }
