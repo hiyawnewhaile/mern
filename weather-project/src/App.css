@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar-cont {
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.navbar-name {
+  margin: 25px;
+}
+
+.navbar-input {
+  margin-top: 35px;
+}
+
+.navbar-currentLocation {
+  margin: 35px;
+}
+
+
