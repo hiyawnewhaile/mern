@@ -1,31 +1,33 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavBar = props => {
-    var x = document.getElementById("demo");
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
+    const navigate = useNavigate();
+    const [location, setLocation] = useState("")
+    const onChangeHandler = e =>{
+        setLocation(e.target.value)
     }
-
-    function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
+    const searchHandler = e => {
+        if(e.key === 'Enter'){
+            navigate(`/weather/bycity/${location}`)
+            setLocation("")
+        }
     }
     return (
         <div className="navbar-cont">
             <div className="navbar-name">
-                <h1>Weather App</h1>
+                <Link className='navbar-name-link' to={'/'}><h1>Weather App</h1></Link>
             </div>
             <div className="navbar-input">
-                <select name="" id="">
-                    <option value="null">Select City</option>
-                </select>
+                <input 
+                value={location} 
+                onChange={onChangeHandler} 
+                placeholder='Enter Location' 
+                type="text"
+                onKeyPress={searchHandler} />
             </div>
             <div className="navbar-currentLocation">
-                <Link to={""}><button>Use Current location</button></Link>
+                <Link to={"/weather/currentlocation"}><button>Use Current location</button></Link>
             </div>
         </div>
     )

@@ -1,26 +1,18 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const CurrentLocation = props => {
-    const [lat, setLat] = useState(null);
-    const [lon, setLon] = useState(null);
+const ByCity = props => {
     const [data, setData] = useState({});
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            setLat(position.coords.latitude);
-            setLon(position.coords.longitude);
-        });
-    }
+    const { city } = useParams();
     useEffect(() => {
-        if(lon && lat){
-            axios
-            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=ce7164686f3c8c841f3a72a3ef7ae469`)
-            .then(res => {
-                console.log(res.data)
+        axios
+            .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=ce7164686f3c8c841f3a72a3ef7ae469`)
+            .then((res) => {
                 setData(res.data)
+                console.log(res.data)
             })
-            .catch(err => console.log(err))
-        }}, [lon, lat])
+    }, [city])
     return (
         <div>
             <div className="container">
@@ -66,4 +58,4 @@ const CurrentLocation = props => {
     )
 }
 
-export default CurrentLocation;
+export default ByCity;

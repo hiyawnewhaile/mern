@@ -1,8 +1,8 @@
-import './App.css';
 import Main from './components/Main';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import CurrentLocation from './components/CurrentLocation';
+import ByCity from './components/ByCity';
 
 function App() {
   const myStyle = {
@@ -19,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}/>
         <Route path="/weather/currentlocation" element={<CurrentLocation/>}/>
+        <Route path="/weather/bycity/:city" element={<ByCity/>}/>
       </Routes>
     </div>
   );
