@@ -12,6 +12,7 @@ function App() {
     minHeight: '100vh',
     backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed', 
+    
 }
   return (
     <div className="App" style={myStyle}>
